@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Countries</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+      integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="check">
+    <nav>
+      <h1>Where in the world?</h1>
+      <div class="dark-mode-btn">
+        <i class="fas fa-moon"></i>
+        <p>Dark Mode</p>
+      </div>
+    </nav>
+
+    <section class="section-1">
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="search for a country..." />
+      </div>
+      <div class="filter-box dropdown">
+        <div class="dropdown-main-box">
+          <input
+            type="text"
+            readonly
+            value="Filter by Region"
+            class="selected-dropdown"
+          />
+        </div>
+
+        <div class="options">
+          <ul>
+            <li class="option">All</li>
+            <li class="option">Africa</li>
+            <li class="option">Americas</li>
+            <li class="option">Asia</li>
+            <li class="option">Europe</li>
+            <li class="option">Oceania</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <h1 class="title"></h1>
+    <section class="section-2">
+      <div class="countries">
+        <!-- data comes from fetch results in javascript -->
+        <div class="country">
+          <img src="https://flagcdn.com/w320/de.png" alt="help image" />
+          <div class="country-details">
+            <h3>germany</h3>
+
+            <p><b>population:</b> 12,545</p>
+            <p><b>region:</b> europe</p>
+            <p><b>capital:</b> berlin</p>
+          </div>
+        </div>
+        <div class="country">
+          <img src="./ticker-gbf3b1c97a_640.png" alt="help image" />
+          <div class="country-details">
+            <h3>germany</h3>
+
+            <p><b>population:</b>12,545</p>
+            <p><b>region:</b>europe</p>
+            <p><b>capital:</b>berlin</p>
+          </div>
+        </div>
+        <div class="country">
+          <img src="./ticker-gbf3b1c97a_640.png" alt="help image" />
+          <div class="country-details">
+            <h3>germany</h3>
+
+            <p><b>population:</b>12,545</p>
+            <p><b>region:</b>europe</p>
+            <p><b>capital:</b>berlin</p>
+          </div>
+        </div>
+        <div class="country">
+          <img src="./ticker-gbf3b1c97a_640.png" alt="help image" />
+          <div class="country-details">
+            <h3>germany</h3>
+
+            <p><b>population:</b>12,545</p>
+            <p><b>region:</b>europe</p>
+            <p><b>capital:</b>berlin</p>
+          </div>
+        </div>
+        <div class="country">
+          <img src="./ticker-gbf3b1c97a_640.png" alt="help image" />
+          <div class="country-details">
+            <h3>germany</h3>
+
+            <p><b>population:</b>12,545</p>
+            <p><b>region:</b>europe</p>
+            <p><b>capital:</b>berlin</p>
+          </div>
+        </div>
+        <div class="country">
+          <img src="./ticker-gbf3b1c97a_640.png" alt="help image" />
+          <div class="country-details">
+            <h3>germany</h3>
+
+            <p><b>population:</b>12,545</p>
+            <p><b>region:</b>europe</p>
+            <p><b>capital:</b>berlin</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
