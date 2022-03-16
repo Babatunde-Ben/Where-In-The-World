@@ -46,7 +46,6 @@ nav .dark-mode-btn {
 nav .dark-mode-btn i {
   margin-right: 5px;
   font-size: 14px;
-  /* transform: rotate(-20deg); */
 }
 nav .dark-mode-btn p {
   display: inline-block;
@@ -187,7 +186,10 @@ nav .dark-mode-btn p {
 
 .section-2 {
   padding: 0 50px;
-  margin: 20px 0;
+  margin: 40px 0;
+}
+.section-2 a {
+  text-decoration: none;
 }
 .section-2 .countries {
   /* background-color: green; */
@@ -197,14 +199,15 @@ nav .dark-mode-btn p {
   flex-wrap: wrap;
 }
 .section-2 .country {
-  /* width: 200px; */
   flex-basis: 20%;
+  min-width: 200px;
   background-color: var(--Light-Mode-Elements);
   border-radius: 5px;
   margin-right: 40px;
   margin-bottom: 40px;
   height: auto;
   overflow: hidden;
+  cursor: pointer;
   box-shadow: 0 0 3px 0 rgba(140, 140, 140, 0.5);
 }
 .section-2.dark-mode .country {
@@ -233,4 +236,24 @@ nav .dark-mode-btn p {
 }
 .section-2.dark-mode .country .country-details p {
   color: var(--Dark-Mode-Text);
+}
+
+/* styles for detailed page */
+
+.back-home {
+  color: var(--Light-Mode-Text);
+  font-size: 14px;
+  text-decoration: none;
+  margin-left: 60px;
+  padding: 5px 20px;
+  border-radius: 2px;
+  background-color: var(--Light-Mode-Elements);
+  box-shadow: 0 0 3px 0 rgba(140, 140, 140, 0.5);
+}
+.back-home i {
+  margin-right: 5px;
+}
+.detail-section {
+  padding: 0 50px;
+  margin: 40px 0;
 }
