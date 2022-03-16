@@ -218,6 +218,7 @@ nav .dark-mode-btn p {
   width: 100%;
   height: 200px;
   object-fit: cover;
+  border-bottom: 1px solid rgba(232, 232, 232, 0.5);
 }
 .section-2 .country .country-details {
   padding: 20px 10px 45px 25px;
