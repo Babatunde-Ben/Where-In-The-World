@@ -242,18 +242,61 @@ nav .dark-mode-btn p {
 
 .back-home {
   color: var(--Light-Mode-Text);
+  display: inline-block;
   font-size: 14px;
   text-decoration: none;
   margin-left: 60px;
+  margin-top: 20px;
   padding: 5px 20px;
   border-radius: 2px;
   background-color: var(--Light-Mode-Elements);
-  box-shadow: 0 0 3px 0 rgba(140, 140, 140, 0.5);
+  box-shadow: 0 0 3px 0 rgba(140, 140, 140, 0.7);
+}
+body.dark-mode .back-home {
+  color: var(--Dark-Mode-Text);
+  background-color: var(--Dark-Mode-Elements);
 }
 .back-home i {
   margin-right: 5px;
+  font-size: 12px;
 }
 .detail-section {
   padding: 0 50px;
-  margin: 40px 0;
+  margin: 50px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  color: var(--Light-Mode-Text);
+}
+.detail-section img,
+.detail-section .details {
+  background-color: red;
+  min-width: 350px;
+  margin-bottom: 40px;
+}
+.detail-section img {
+  margin-right: 10px;
+  flex-basis: 40%;
+}
+.detail-section .details {
+  flex-basis: 45%;
+}
+.detail-section .details {
+  padding: 30px 0;
+}
+.detail-section .details .country-name {
+  margin-bottom: 20px;
+}
+.detail-section .details .detail-row {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.detail-section .details .detail-row .col-2 {
+  max-width: 200px;
+  /* background-color: green; */
+  margin-bottom: 5px;
 }
