@@ -399,7 +399,7 @@ body.dark-mode .back-home {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    flex-wrap: nowrap;
+    /* flex-wrap: nowrap; */
     width: 100%;
     padding: 0 25px;
   }

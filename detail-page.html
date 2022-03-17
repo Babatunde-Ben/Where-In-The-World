@@ -73,6 +73,11 @@
               let currency = item.currencies[0].code;
               let borderArray = item.borders;
               let borders;
+              let languages = item.languages.map((item) => {
+                return item.name;
+              });
+              languages = languages.join(", ");
+
               if (!currency) {
                 currency = "null";
               }
@@ -82,6 +87,8 @@
                   return `<span class="border">${item}</span>           `;
                 });
                 border = borders.join("");
+              } else {
+                border = "";
               }
 
               return ` <img src="${item.flags.png}" alt="${item.name}" />
@@ -98,7 +105,7 @@
           <div class="col-2">
             <p><b>Top Level Domain:</b> ${item.topLevelDomain}</p>
             <p><b>Currencies:</b> ${currency}</p>
-            <p><b>Languages:</b> ${item.languages[0].name} </p>
+            <p><b>Languages:</b> ${languages} </p>
           </div>
         </div>
 
