@@ -249,9 +249,9 @@ nav .dark-mode-btn p {
   background-color: var(--Light-Mode-Elements);
   position: fixed;
   bottom: 30px;
-  left: 30px;
+  right: 20px;
   color: var(--Light-Mode-Text);
-  box-shadow: 0 0 3px 0 rgba(140, 140, 140, 0.5);
+  box-shadow: 0 0 8px rgba(140, 140, 140, 0.5);
   border-radius: 5px;
   display: flex;
   justify-content: center;
@@ -259,6 +259,7 @@ nav .dark-mode-btn p {
   cursor: pointer;
   animation: bounce 1s ease-in infinite;
   display: none;
+  z-index: 99999;
 }
 #top.active {
   display: flex;

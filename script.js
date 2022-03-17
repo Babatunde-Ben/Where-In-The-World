@@ -187,7 +187,8 @@
 const backToTop = document.getElementById("top");
 console.log(backToTop);
 window.addEventListener("scroll", () => {
-  if (window.pageYOffset > 700) {
+  console.log(window.pageYOffset);
+  if (window.pageYOffset > 1200) {
     backToTop?.classList.add("active");
   } else {
     backToTop?.classList.remove("active");
