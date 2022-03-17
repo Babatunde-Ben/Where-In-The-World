@@ -65,7 +65,6 @@
       let country = new URLSearchParams(window.location.search).get("country");
       const container = document.querySelector(".detail-section");
       let url = `https://restcountries.com/v2/name/${country}`;
-      console.log(url);
       function generateCountries(url) {
         fetch(url)
           .then((res) => res.json())

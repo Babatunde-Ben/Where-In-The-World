@@ -41,7 +41,7 @@
   // functionality for filtering countries container by region
 
   option.forEach((item) => {
-    item.addEventListener("click", (e) => {
+    item.addEventListener("click", async (e) => {
       if (e.target.textContent == "All") {
         selectedInput.value = "Filter by Region";
         url = "https://restcountries.com/v2/all";
@@ -50,7 +50,8 @@
         selectedInput.value = e.target.textContent;
         region = e.target.textContent;
         url = `https://restcountries.com/v2/region/${region}`;
-        byRegion(url, region);
+        await byRegion(url, region);
+        redirect();
       }
     });
   });
@@ -95,46 +96,12 @@
 
   // function to populate countries by region
   function byRegion(url) {
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        const countryNameArray = data.map((item) => {
-          return ` <div class="country" data-country="${item.name}">
-      <img src="${item.flags.png}" alt="${item.name}" />
-      <div class="country-details">
-        <h3>${item.name}</h3>
-
-        <p><b>population:</b> ${item.population}</p>
-        <p><b>region:</b> ${item.region}</p>
-        <p><b>capital:</b> ${item.capital}</p>
-      </div>
-    </div>`;
-        });
-        mainContainer.innerHTML = countryNameArray.join("");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
-  // functionality for searching countries
-
-  searchBoxInput?.addEventListener("keyup", () => {
-    const value = searchBoxInput.value;
-
-    // if search input is empty
-    if (value.length == 0) {
-      console.log(`is empty`);
-      url = "https://restcountries.com/v2/all";
-      generateCountries(url);
-    }
-
-    url = `https://restcountries.com/v2/name/${value}`;
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        const countryNameArray = data.map((item) => {
-          return ` <div class="country" data-country="${item.name}">
+    return new Promise((resolve, reject) => {
+      fetch(url)
+        .then((res) => res.json())
+        .then((data) => {
+          const countryNameArray = data.map((item) => {
+            return ` <div class="country" data-country="${item.name}">
         <img src="${item.flags.png}" alt="${item.name}" />
         <div class="country-details">
           <h3>${item.name}</h3>
@@ -144,16 +111,65 @@
           <p><b>capital:</b> ${item.capital}</p>
         </div>
       </div>`;
-        });
-        if (data.status == "404") {
-          mainContainer.innerHTML = `<div class="error">...no results found</div>`;
-        } else {
+          });
           mainContainer.innerHTML = countryNameArray.join("");
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+          return resolve(countryNameArray);
+        })
+        .catch((err) => {
+          console.log(err);
+          return reject(err);
+        });
+    });
+  }
+
+  // function to populate countries by search
+  function searchCountries(url) {
+    return new Promise((resolve, reject) => {
+      fetch(url)
+        .then((res) => res.json())
+        .then((data) => {
+          const countryNameArray = data.map((item) => {
+            return ` <div class="country" data-country="${item.name}">
+    <img src="${item.flags.png}" alt="${item.name}" />
+    <div class="country-details">
+      <h3>${item.name}</h3>
+
+      <p><b>population:</b> ${item.population}</p>
+      <p><b>region:</b> ${item.region}</p>
+      <p><b>capital:</b> ${item.capital}</p>
+    </div>
+  </div>`;
+          });
+          if (data.status == "404") {
+            mainContainer.innerHTML = `<div class="error">...no results found</div>`;
+          } else {
+            mainContainer.innerHTML = countryNameArray.join("");
+          }
+          return resolve(countryNameArray);
+        })
+        .catch((err) => {
+          console.log(err);
+          return reject(err);
+        });
+    });
+  }
+
+  // functionality for searching countries
+
+  searchBoxInput?.addEventListener("keyup", async () => {
+    const value = searchBoxInput.value;
+
+    // if search input is empty
+    if (value.length == 0) {
+      console.log(`is empty`);
+      url = "https://restcountries.com/v2/all";
+      await generateCountries(url);
+      redirect();
+    }
+
+    url = `https://restcountries.com/v2/name/${value}`;
+    await searchCountries(url);
+    redirect();
   });
 
   function redirect() {
