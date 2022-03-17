@@ -1,131 +1,140 @@
-const body = document.querySelector("body");
-const section1 = document.querySelector(".section-1");
-const section2 = document.querySelector(".section-2");
-const mainContainer = document.querySelector(".countries");
-const options = document.querySelectorAll(".options");
-const option = document.querySelectorAll(".options .option");
-const detailSection = document.querySelector(".detail-section");
-const darkModeBtn = document.querySelector(".dark-mode-btn");
-const dropdown = document.querySelector(".dropdown");
-const selectedInput = document.querySelector(".selected-dropdown");
-const searchBoxInput = document.querySelector(".search-box input");
+(function () {
+  const body = document.querySelector("body");
+  const section1 = document.querySelector(".section-1");
+  const section2 = document.querySelector(".section-2");
+  const mainContainer = document.querySelector(".countries");
+  const options = document.querySelectorAll(".options");
+  const option = document.querySelectorAll(".options .option");
+  const detailSection = document.querySelector(".detail-section");
+  const darkModeBtn = document.querySelector(".dark-mode-btn");
+  const dropdown = document.querySelector(".dropdown");
+  const selectedInput = document.querySelector(".selected-dropdown");
+  const searchBoxInput = document.querySelector(".search-box input");
 
-let url;
-let region;
+  let url;
+  let region;
 
-// toggle dark mode
-darkModeBtn?.addEventListener("click", () => {
-  if (!body.classList.contains("dark-mode")) {
-    section1?.classList.add("dark-mode");
-    section2?.classList.add("dark-mode");
-    detailSection?.classList.add("dark-mode");
-    body.classList.add("dark-mode");
-    darkModeBtn.innerHTML = `<i class="fas fa-lightbulb"></i>
+  // toggle dark mode
+  darkModeBtn?.addEventListener("click", () => {
+    if (!body.classList.contains("dark-mode")) {
+      section1?.classList.add("dark-mode");
+      section2?.classList.add("dark-mode");
+      detailSection?.classList.add("dark-mode");
+      body.classList.add("dark-mode");
+      darkModeBtn.innerHTML = `<i class="fas fa-lightbulb"></i>
     <p>Light Mode</p>`;
-  } else {
-    section1?.classList.remove("dark-mode");
-    section2?.classList.remove("dark-mode");
-    detailSection?.classList.remove("dark-mode");
-    body.classList.remove("dark-mode");
-    darkModeBtn.innerHTML = `<i class="fas fa-moon"></i>
-    <p>Dark Mode</p>`;
-  }
-});
-
-// initiate dropdown menu
-dropdown?.addEventListener("click", () => {
-  dropdown.classList.toggle("active");
-});
-
-// functionality for filtering countries container by region
-
-option.forEach((item) => {
-  item.addEventListener("click", (e) => {
-    if (e.target.textContent == "All") {
-      selectedInput.value = "Filter by Region";
-      url = "https://restcountries.com/v2/all";
-      generateCountries(url);
     } else {
-      selectedInput.value = e.target.textContent;
-      region = e.target.textContent;
-      url = `https://restcountries.com/v2/region/${region}`;
-      byRegion(url, region);
+      section1?.classList.remove("dark-mode");
+      section2?.classList.remove("dark-mode");
+      detailSection?.classList.remove("dark-mode");
+      body.classList.remove("dark-mode");
+      darkModeBtn.innerHTML = `<i class="fas fa-moon"></i>
+    <p>Dark Mode</p>`;
     }
   });
-});
 
-// populate countries for home page
-window.addEventListener("DOMContentLoaded", () => {
-  url = "https://restcountries.com/v2/all";
-  generateCountries(url);
-});
+  // initiate dropdown menu
+  dropdown?.addEventListener("click", () => {
+    dropdown.classList.toggle("active");
+  });
 
-// function to populate all countries
-function generateCountries(url) {
-  fetch(url)
-    .then((res) => res.json())
-    .then((data) => {
-      const countryNameArray = data.map((item) => {
-        return ` <div class="country">
-      <img src="${item.flags.png}" alt="${item.name}" />
-      <div class="country-details">
-        <h3>${item.name}</h3>
+  // functionality for filtering countries container by region
 
-        <p><b>population:</b> ${item.population}</p>
-        <p><b>region:</b> ${item.region}</p>
-        <p><b>capital:</b> ${item.capital}</p>
-      </div>
-    </div>`;
-      });
-      mainContainer.innerHTML = countryNameArray.join("");
-    })
-    .catch((err) => {
-      console.log(err);
+  option.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      if (e.target.textContent == "All") {
+        selectedInput.value = "Filter by Region";
+        url = "https://restcountries.com/v2/all";
+        generateCountries(url);
+      } else {
+        selectedInput.value = e.target.textContent;
+        region = e.target.textContent;
+        url = `https://restcountries.com/v2/region/${region}`;
+        byRegion(url, region);
+      }
     });
-}
+  });
 
-// function to populate countries by region
-function byRegion(url) {
-  fetch(url)
-    .then((res) => res.json())
-    .then((data) => {
-      const countryNameArray = data.map((item) => {
-        return ` <div class="country">
-      <img src="${item.flags.png}" alt="${item.name}" />
-      <div class="country-details">
-        <h3>${item.name}</h3>
-
-        <p><b>population:</b> ${item.population}</p>
-        <p><b>region:</b> ${item.region}</p>
-        <p><b>capital:</b> ${item.capital}</p>
-      </div>
-    </div>`;
-      });
-      mainContainer.innerHTML = countryNameArray.join("");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-}
-
-// functionality for searching countries
-
-searchBoxInput.addEventListener("keyup", () => {
-  const value = searchBoxInput.value;
-
-  // if search input is empty
-  if (value.length == 0) {
-    console.log(`is empty`);
+  // populate countries for home page
+  window.addEventListener("DOMContentLoaded", async () => {
     url = "https://restcountries.com/v2/all";
-    generateCountries(url);
+    await generateCountries(url);
+    redirect();
+  });
+
+  // function to populate all countries
+  function generateCountries(url) {
+    return new Promise((resolve, reject) => {
+      fetch(url)
+        .then((res) => res.json())
+        .then((data) => {
+          const countryNameArray = data.map((item) => {
+            return ` <div class="country" data-country="${item.name}">
+    <img src="${item.flags.png}" alt="${item.name}" />
+    <div class="country-details">
+      <h3>${item.name}</h3>
+
+      <p><b>population:</b> ${item.population}</p>
+      <p><b>region:</b> ${item.region}</p>
+      <p><b>capital:</b> ${item.capital}</p>
+    </div>
+  </div>`;
+          });
+          if (mainContainer) {
+            mainContainer.innerHTML = countryNameArray.join("");
+          }
+
+          return resolve(countryNameArray);
+        })
+        .catch((err) => {
+          console.log(err);
+          return reject(err);
+        });
+    });
   }
 
-  url = `https://restcountries.com/v2/name/${value}`;
-  fetch(url)
-    .then((res) => res.json())
-    .then((data) => {
-      const countryNameArray = data.map((item) => {
-        return ` <div class="country">
+  // function to populate countries by region
+  function byRegion(url) {
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        const countryNameArray = data.map((item) => {
+          return ` <div class="country" data-country="${item.name}">
+      <img src="${item.flags.png}" alt="${item.name}" />
+      <div class="country-details">
+        <h3>${item.name}</h3>
+
+        <p><b>population:</b> ${item.population}</p>
+        <p><b>region:</b> ${item.region}</p>
+        <p><b>capital:</b> ${item.capital}</p>
+      </div>
+    </div>`;
+        });
+        mainContainer.innerHTML = countryNameArray.join("");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  // functionality for searching countries
+
+  searchBoxInput?.addEventListener("keyup", () => {
+    const value = searchBoxInput.value;
+
+    // if search input is empty
+    if (value.length == 0) {
+      console.log(`is empty`);
+      url = "https://restcountries.com/v2/all";
+      generateCountries(url);
+    }
+
+    url = `https://restcountries.com/v2/name/${value}`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        const countryNameArray = data.map((item) => {
+          return ` <div class="country" data-country="${item.name}">
         <img src="${item.flags.png}" alt="${item.name}" />
         <div class="country-details">
           <h3>${item.name}</h3>
@@ -135,18 +144,25 @@ searchBoxInput.addEventListener("keyup", () => {
           <p><b>capital:</b> ${item.capital}</p>
         </div>
       </div>`;
+        });
+        if (data.status == "404") {
+          mainContainer.innerHTML = `<div class="error">...no results found</div>`;
+        } else {
+          mainContainer.innerHTML = countryNameArray.join("");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
       });
-      if (data.status == "404") {
-        mainContainer.innerHTML = `<div class="error">...no results found</div>`;
-      } else {
-        mainContainer.innerHTML = countryNameArray.join("");
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
+  });
 
-console.log(country);
-const 
-console.log(country);
+  function redirect() {
+    const country = document.querySelectorAll(".country");
+    country.forEach((item) => {
+      item.addEventListener("click", () => {
+        const value = item.dataset.country;
+        window.location.href = `/detail-page.html?country=${value}`;
+      });
+    });
+  }
+})();

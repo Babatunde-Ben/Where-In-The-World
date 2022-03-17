@@ -322,6 +322,7 @@ body.dark-mode .back-home {
 }
 .detail-section .border-countries p {
   width: auto;
+  margin-bottom: 20px;
 }
 .detail-section .border-countries .border {
   padding: 5px 10px;
