@@ -146,3 +146,7 @@ searchBoxInput.addEventListener("keyup", () => {
       console.log(err);
     });
 });
+
+console.log(country);
+const 
+console.log(country);
