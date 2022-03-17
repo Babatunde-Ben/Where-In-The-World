@@ -78,7 +78,10 @@
               }
 
               if (borderArray) {
-                borders = borderArray;
+                borders = borderArray.map((item) => {
+                  return `<span class="border">${item}</span>           `;
+                });
+                border = borders.join("");
               }
 
               return ` <img src="${item.flags.png}" alt="${item.name}" />
@@ -102,9 +105,7 @@
         <div class="border-countries">
           <p><b>Border Countries</b></p>
           <div>
-            <span class="border">border1</span>
-            <span class="border">border2</span>
-            <span class="border">border3</span>
+            ${border}
           </div>
         </div>
       </div>`;
