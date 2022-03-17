@@ -70,9 +70,6 @@
         .then((res) => res.json())
         .then((data) => {
           const countryNameArray = data.map((item) => {
-            // if (item.languages[1]) {
-            //   console.log(item.languages[1].name, item.name);
-            // }
             return ` <div class="country" data-country="${item.name}">
     <img src="${item.flags.png}" alt="${item.name}" />
     <div class="country-details">
@@ -185,3 +182,21 @@
     });
   }
 })();
+
+// scroll back to top
+const backToTop = document.getElementById("top");
+console.log(backToTop);
+window.addEventListener("scroll", () => {
+  if (window.pageYOffset > 700) {
+    backToTop?.classList.add("active");
+  } else {
+    backToTop?.classList.remove("active");
+  }
+});
+
+backToTop.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+  });
+});
