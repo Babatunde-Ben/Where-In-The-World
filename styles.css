@@ -290,6 +290,7 @@ body.dark-mode #top {
   /* margin-top: 20px; */
   font-style: italic;
   text-transform: lowercase;
+  cursor: pointer;
   color: rgb(140, 140, 140);
 }
 
