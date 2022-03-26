@@ -92,6 +92,7 @@
       <p><b>population:</b> ${item.population}</p>
       <p><b>region:</b> ${item.region}</p>
       <p><b>capital:</b> ${item.capital}</p>
+      <p id="see-more"> see more...</p>
     </div>
   </div>`;
           });
@@ -123,6 +124,8 @@
           <p><b>population:</b> ${item.population}</p>
           <p><b>region:</b> ${item.region}</p>
           <p><b>capital:</b> ${item.capital}</p>
+      <p id="see-more"> see more...</p>
+
         </div>
       </div>`;
           });
@@ -151,6 +154,8 @@
       <p><b>population:</b> ${item.population}</p>
       <p><b>region:</b> ${item.region}</p>
       <p><b>capital:</b> ${item.capital}</p>
+      <p id="see-more"> see more...</p>
+
     </div>
   </div>`;
           });
