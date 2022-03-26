@@ -14,9 +14,23 @@
   let url;
   let region;
 
-  // toggle dark mode
+  toggleDarkMode();
+
+  // save dark mode memory to local storage
   darkModeBtn?.addEventListener("click", () => {
     if (!body.classList.contains("dark-mode")) {
+      localStorage.setItem("darkMode", "true");
+      toggleDarkMode();
+    } else {
+      localStorage.setItem("darkMode", "false");
+      toggleDarkMode();
+    }
+  });
+
+  // toggle dark mode
+  function toggleDarkMode() {
+    if (localStorage.getItem("darkMode") == "true") {
+      console.log(`dak mode is true`);
       section1?.classList.add("dark-mode");
       section2?.classList.add("dark-mode");
       detailSection?.classList.add("dark-mode");
@@ -24,6 +38,7 @@
       darkModeBtn.innerHTML = `<i class="fas fa-lightbulb"></i>
     <p>Light Mode</p>`;
     } else {
+      console.log(`dark mode is false`);
       section1?.classList.remove("dark-mode");
       section2?.classList.remove("dark-mode");
       detailSection?.classList.remove("dark-mode");
@@ -31,8 +46,7 @@
       darkModeBtn.innerHTML = `<i class="fas fa-moon"></i>
     <p>Dark Mode</p>`;
     }
-  });
-
+  }
   // initiate dropdown menu
   dropdown?.addEventListener("click", () => {
     dropdown.classList.toggle("active");
@@ -195,7 +209,7 @@ window.addEventListener("scroll", () => {
   }
 });
 
-backToTop.addEventListener("click", () => {
+backToTop?.addEventListener("click", () => {
   window.scrollTo({
     top: 0,
     left: 0,
