@@ -85,7 +85,7 @@
         .then((res) => res.json())
         .then((data) => {
           const countryNameArray = data.map((item) => {
-            return ` <div class="country" data-country="${item.name}">
+            return ` <div class="country" data-country="${item.name}" data-aos="zoom-in-up">
     <img src="${item.flags.png}" alt="${item.name}" />
     <div class="country-details">
       <h3>${item.name}</h3>
@@ -116,7 +116,7 @@
         .then((res) => res.json())
         .then((data) => {
           const countryNameArray = data.map((item) => {
-            return ` <div class="country" data-country="${item.name}">
+            return ` <div class="country" data-country="${item.name}" data-aos="zoom-in-up">
         <img src="${item.flags.png}" alt="${item.name}" />
         <div class="country-details">
           <h3>${item.name}</h3>
@@ -145,7 +145,7 @@
         .then((res) => res.json())
         .then((data) => {
           const countryNameArray = data.map((item) => {
-            return ` <div class="country" data-country="${item.name}">
+            return ` <div class="country" data-country="${item.name}" data-aos="zoom-in-up">
     <img src="${item.flags.png}" alt="${item.name}" />
     <div class="country-details">
       <h3>${item.name}</h3>
@@ -215,3 +215,10 @@ backToTop?.addEventListener("click", () => {
     left: 0,
   });
 });
+
+//  update copyright
+const footerYear = document.querySelector(".footer-year");
+footerYear.textContent = new Date().getFullYear();
+
+// initialize Animate On Scroll (AOS)
+AOS.init();
