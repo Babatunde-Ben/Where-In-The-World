@@ -30,7 +30,6 @@
   // toggle dark mode
   function toggleDarkMode() {
     if (localStorage.getItem("darkMode") == "true") {
-      console.log(`dak mode is true`);
       section1?.classList.add("dark-mode");
       section2?.classList.add("dark-mode");
       detailSection?.classList.add("dark-mode");
@@ -38,7 +37,6 @@
       darkModeBtn.innerHTML = `<i class="fas fa-lightbulb"></i>
     <p>Light Mode</p>`;
     } else {
-      console.log(`dark mode is false`);
       section1?.classList.remove("dark-mode");
       section2?.classList.remove("dark-mode");
       detailSection?.classList.remove("dark-mode");
@@ -103,7 +101,6 @@
           return resolve(countryNameArray);
         })
         .catch((err) => {
-          console.log(err);
           return reject(err);
         });
     });
@@ -133,7 +130,6 @@
           return resolve(countryNameArray);
         })
         .catch((err) => {
-          console.log(err);
           return reject(err);
         });
     });
@@ -167,7 +163,6 @@
           return resolve(countryNameArray);
         })
         .catch((err) => {
-          console.log(err);
           return reject(err);
         });
     });
@@ -180,7 +175,6 @@
 
     // if search input is empty
     if (value.length == 0) {
-      console.log(`is empty`);
       url = "https://restcountries.com/v2/all";
       await generateCountries(url);
       redirect();
@@ -204,9 +198,7 @@
 
 // scroll back to top
 const backToTop = document.getElementById("top");
-console.log(backToTop);
 window.addEventListener("scroll", () => {
-  console.log(window.pageYOffset);
   if (window.pageYOffset > 1200) {
     backToTop?.classList.add("active");
   } else {

@@ -5,7 +5,7 @@
   box-sizing: border-box;
   font-family: "Nunito Sans", sans-serif;
   transition-property: color, background;
-  transition-duration: 0.1s;
+  transition-duration: 0.05s;
 }
 :root {
   --Dark-Mode-Elements: hsl(209, 23%, 22%);
@@ -57,6 +57,7 @@ nav .dark-mode-btn p {
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
+  gap: 15px;
 }
 .section-1 .search-box {
   width: 300px;
@@ -191,6 +192,7 @@ nav .dark-mode-btn p {
 .section-2 {
   padding: 0 50px;
   margin: 40px 0;
+  min-height: 45vh;
 }
 .section-2 a {
   text-decoration: none;
@@ -325,6 +327,7 @@ body.dark-mode .back-home {
   justify-content: space-between;
   align-items: flex-start;
   color: var(--Light-Mode-Text);
+  min-height: 45vh;
 }
 .detail-section.dark-mode {
   color: var(--Dark-Mode-Text);
@@ -387,6 +390,46 @@ body.dark-mode .back-home {
 .detail-section.dark-mode .border-countries .border {
   background-color: var(--Dark-Mode-Elements);
 }
+.footer {
+  width: 100%;
+  text-align: center;
+  background-color: var(--Light-Mode-Elements);
+  box-shadow: 0 -2px 5px rgba(179, 179, 179, 0.2);
+  height: 35vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 40px;
+}
+.footer p {
+  color: var(--Light-Mode-Text);
+}
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  /* flex-direction: column; */
+}
+.footer-links {
+  text-decoration: none;
+  display: inline-block;
+  color: var(--Light-Mode-Input);
+  border: 1px solid var(--Light-Mode-Input);
+  text-align: center;
+  line-height: 35px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+.footer-links:hover {
+  background-color: var(--Light-Mode-Background);
+  box-shadow: 0 0 4px var(--Light-Mode-Background);
+}
+.footer a {
+  color: var(--Light-Mode-Input);
+  text-decoration: none;
+}
 
 /* stylings for mobile view */
 @media only screen and (max-width: 375px) {
@@ -409,7 +452,7 @@ body.dark-mode .back-home {
   }
   .section-1 .search-box {
     width: 100%;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
   }
   .section-1 i {
     padding-right: 10px;
