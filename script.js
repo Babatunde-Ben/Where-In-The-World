@@ -6,6 +6,7 @@
   const options = document.querySelectorAll(".options");
   const option = document.querySelectorAll(".options .option");
   const detailSection = document.querySelector(".detail-section");
+  const footer = document.querySelector(".footer");
   const darkModeBtn = document.querySelector(".dark-mode-btn");
   const dropdown = document.querySelector(".dropdown");
   const selectedInput = document.querySelector(".selected-dropdown");
@@ -33,6 +34,7 @@
       section1?.classList.add("dark-mode");
       section2?.classList.add("dark-mode");
       detailSection?.classList.add("dark-mode");
+      footer?.classList.add("dark-mode");
       body.classList.add("dark-mode");
       darkModeBtn.innerHTML = `<i class="fas fa-lightbulb"></i>
     <p>Light Mode</p>`;
@@ -40,6 +42,7 @@
       section1?.classList.remove("dark-mode");
       section2?.classList.remove("dark-mode");
       detailSection?.classList.remove("dark-mode");
+      footer?.classList.remove("dark-mode");
       body.classList.remove("dark-mode");
       darkModeBtn.innerHTML = `<i class="fas fa-moon"></i>
     <p>Dark Mode</p>`;
