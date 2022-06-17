@@ -18,6 +18,7 @@
       href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="check">
@@ -79,7 +80,7 @@
         <a href="mailto:babatundeben110@gmail.com">Babatunde Adeniyi</a>
       </p>
     </footer>
-
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
       let country = new URLSearchParams(window.location.search).get("country");
       const container = document.querySelector(".detail-section");
@@ -110,25 +111,25 @@
                 border = "";
               }
 
-              return ` <img src="${item.flags.png}" alt="${item.name}" />
+              return ` <img src="${item.flags.png}" alt="${item.name}" data-aos="zoom-in-up"  />
       <div class="details">
         <h3 class="country-name">${item.name}</h3>
         <div class="detail-row">
-          <div class="col-2">
+          <div class="col-2" data-aos="zoom-in-up" data-aos-delay="100">
             <p><b>Native Name:</b> ${item.nativeName}</p>
             <p><b>Population:</b> ${item.population}</p>
             <p><b>Region:</b> ${item.region}</p>
             <p><b>Sub Region:</b> ${item.subregion}</p>
             <p><b>Capital:</b> ${item.capital}</p>
           </div>
-          <div class="col-2">
+          <div class="col-2"  data-aos="zoom-in-up" data-aos-delay="100" data-aos-offset="50">
             <p><b>Top Level Domain:</b> ${item.topLevelDomain}</p>
             <p><b>Currencies:</b> ${currency}</p>
             <p><b>Languages:</b> ${languages} </p>
           </div>
         </div>
 
-        <div class="border-countries">
+        <div class="border-countries"  data-aos="zoom-in-up" data-aos-delay="100"  data-aos-offset="50">
           <p><b>Border Countries</b></p>
           <div>
             ${border}

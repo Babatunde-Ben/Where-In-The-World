@@ -85,7 +85,7 @@
         .then((res) => res.json())
         .then((data) => {
           const countryNameArray = data.map((item) => {
-            return ` <div class="country" data-country="${item.name}" data-aos="zoom-in-up">
+            return ` <div class="country" data-aos="zoom-in-up">
     <img src="${item.flags.png}" alt="${item.name}" />
     <div class="country-details">
       <h3>${item.name}</h3>
@@ -93,7 +93,7 @@
       <p><b>population:</b> ${item.population}</p>
       <p><b>region:</b> ${item.region}</p>
       <p><b>capital:</b> ${item.capital}</p>
-      <p id="see-more"> see more...</p>
+      <p id="see-more" data-country="${item.name}" > Click to see more</p>
     </div>
   </div>`;
           });
@@ -124,7 +124,7 @@
           <p><b>population:</b> ${item.population}</p>
           <p><b>region:</b> ${item.region}</p>
           <p><b>capital:</b> ${item.capital}</p>
-      <p id="see-more"> see more...</p>
+      <p id="see-more" data-country="${item.name}"> Click to see more</p>
 
         </div>
       </div>`;
@@ -153,7 +153,7 @@
       <p><b>population:</b> ${item.population}</p>
       <p><b>region:</b> ${item.region}</p>
       <p><b>capital:</b> ${item.capital}</p>
-      <p id="see-more"> see more...</p>
+      <p id="see-more" data-country="${item.name}"> Click to see more</p>
 
     </div>
   </div>`;
@@ -188,8 +188,9 @@
     redirect();
   });
 
+  // redirect users
   function redirect() {
-    const country = document.querySelectorAll(".country");
+    const country = document.querySelectorAll("#see-more");
     country.forEach((item) => {
       item.addEventListener("click", () => {
         const value = item.dataset.country;
